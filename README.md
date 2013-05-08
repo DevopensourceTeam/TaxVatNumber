@@ -8,6 +8,7 @@ Magento Module Devopensource_TaxVatNumber
 
 * Field checkout taxvatnumber required by the selected country in the billing address.
 * Autocomplete field TaxVatNumber in checkout.
+* Remove field taxvatnumber in form register.
 
 ### Requirements
 
@@ -28,3 +29,6 @@ Magento Module Devopensource_TaxVatNumber
 **Tax Vat Number**
 
 ### Changelog
+
+
+
