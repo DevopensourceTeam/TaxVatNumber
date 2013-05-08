@@ -18,6 +18,7 @@ Magento Module Devopensource_TaxVatNumber
 
 ### How to Install
 
+* modgit init .
 * modgit clone [git@github.com:DevopensourceTeam/TaxVatNumber.git](git@github.com:DevopensourceTeam/TaxVatNumber.git)
 
 
@@ -27,6 +28,3 @@ Magento Module Devopensource_TaxVatNumber
 **Tax Vat Number**
 
 ### Changelog
-
-
-
