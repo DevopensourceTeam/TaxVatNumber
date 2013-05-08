@@ -1,0 +1,62 @@
+<?php if ($this->helper('devopentaxvatnumber')->isEnabledModule()){ ?>
+    <li>
+        <label for="billing:taxvat" <?php if($this->isRequired()){ ?>class="required"><em>*</em><?php }else{ ?>><?php } ?><?php echo $this->__($this->getLabel());?></label>
+        <div class="input-box">
+            <input type="text" class="input-text <?php if($this->isRequired()){ ?>required-entry<?php } ?>" title="<?php echo $this->__($this->getLabel());?>" value="<?php if ($this->isAutocomplete()) echo $this->getCustomer()->getTaxvat(); ?>" name="billing[taxvat]" id="billing:taxvat">
+        </div>
+        <?php echo $this->__('('.$this->getCustomLegendText().')');?>
+    </li>
+<?php } ?>
+
+<script type="text/javascript">
+    <?php
+    // Print the js array source php array
+    echo $this->helper('devopentaxvatnumber')->convertToJsArray('countriesReq', $this->getCountriesRequired());
+
+    ?>
+
+    // Handler required input tax vat number with value of country select
+    function requiredTaxVatNumberInput(){
+
+        // option selected en select country
+        $valueSelected = $('billing:country_id').value;
+
+        if(countriesReq.indexOf($valueSelected) != -1){
+
+            $('billing:taxvat').addClassName('required-entry');
+
+            // add element <em>
+            $$('label[for="billing:taxvat"]').first().insert({
+                top: new Element('em').update('*')
+            });
+
+            $$('label[for="billing:taxvat"]').first().addClassName('required');
+        }else{
+
+            $('billing:taxvat').removeClassName('required-entry');
+            $('billing:taxvat').removeClassName('validation-failed');
+
+            // element <em>
+            if($$('label[for="billing:taxvat"]').first().childElements()[0]){
+                $$('label[for="billing:taxvat"]').first().childElements()[0].remove();
+            }
+            $$('label[for="billing:taxvat"]').first().removeClassName('required');
+
+            if($('advice-required-entry-billing:taxvat')){
+                $('advice-required-entry-billing:taxvat').remove();
+            }
+        }
+    }
+    
+    document.observe("dom:loaded", function() {
+
+        requiredTaxVatNumberInput();
+    });
+
+    // When change the selected value
+    $('billing:country_id').observe('change',function(){
+        requiredTaxVatNumberInput();
+
+    });
+
+</script>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    Devopensource
+ * @package		Devopensource_TaxVatNumber
+ * @version     0.1.0
+ * @copyright   Copyright (c) 2013 Devopensource
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+*/
+-->
+<config>
+    <modules>
+        <Devopensource_TaxVatNumber>
+            <version>0.1.0</version>
+        </Devopensource_TaxVatNumber>
+    </modules>
+    <global>
+        <models>
+            <class>Devopensource_TaxVatNumber_Model</class>
+            <checkout>
+                <rewrite>
+                    <type_onepage>Devopensource_TaxVatNumber_Model_Checkout_Type_Onepage</type_onepage>
+                </rewrite>
+            </checkout>
+        </models>
+        <blocks>
+            <devopentaxvatnumber>
+                <class>Devopensource_TaxVatNumber_Block</class>
+            </devopentaxvatnumber>
+        </blocks>
+        <helpers>
+            <devopentaxvatnumber>
+                <class>Devopensource_TaxVatNumber_Helper</class>
+            </devopentaxvatnumber>
+        </helpers>
+    </global>
+    <default>
+        <devopentaxvatnumber>
+            <general>
+                <enabled>1</enabled>
+                <label_input>Tax/VAT number</label_input>
+                <text_legend_input>Solo obligatorio para España</text_legend_input>
+                <autocomplete_cif_number>1</autocomplete_cif_number>
+                <required_country>ES</required_country>
+            </general>
+        </devopentaxvatnumber>
+    </default>
+</config>
