@@ -1,7 +1,7 @@
 <?php
 /*
  * @category    Devopensource
- * @package		Devopensource_All
+ * @package		Devopensource_TaxVatNumber
  * @author      Jose Ruzafa <jose.ruzafa@devopensource.com>
  * @version     0.1.0
  * @copyright   Copyright (c) 2013 Devopensource
