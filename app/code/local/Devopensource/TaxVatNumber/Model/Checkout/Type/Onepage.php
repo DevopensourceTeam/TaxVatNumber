@@ -18,7 +18,8 @@ class Devopensource_TaxVatNumber_Model_Checkout_Type_Onepage extends Mage_Checko
 
     public function __construct(){
         parent::__construct();
-
+        $this->_helper = Mage::helper('checkout');
+        $this->_customerEmailExistsMessage = $this->_helper->__('There is already a customer registered using this email address. Please login using this email address or enter a different email address to register your account.');
     }
 
     /**
@@ -42,6 +43,20 @@ class Devopensource_TaxVatNumber_Model_Checkout_Type_Onepage extends Mage_Checko
         if (empty($data)) {
             return array('error' => -1, 'message' => Mage::helper('checkout')->__('Invalid data.'));
         }
+
+        //Mage::log($data, null, 'custominvoice.log', true);
+
+        if(isset($data['order_prof']) && $data['order_prof'] == 1){
+
+            Mage::getSingleton('core/session')->setOrderProf(1);
+
+        }else{
+            Mage::getSingleton('core/session')->setOrderProf(0);
+        }
+
+
+
+        //Mage::log(Mage::getSingleton('core/session'), null, 'custominvoice.log', true);
 
         /**
          * Save tax/vat number from billing adress
